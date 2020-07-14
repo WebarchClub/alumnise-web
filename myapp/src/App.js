@@ -1,6 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import firebase from "./firebase";
 import Example from "./modal/modal";
 
