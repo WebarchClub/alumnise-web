@@ -1,10 +1,10 @@
 import React from "react";
 import firebase from "./firebase";
 // import Example from "./modal/modal";
-import "./App.css";
+import "../.././style/App.css";
 
 const Terminal = ({ userData }) => {
-    const [name, setname] = React.useState("");
+    const [name, setname] = React.useState(userData.displayName);
     const [batch, setbatch] = React.useState("");
     const [company, setcompany] = React.useState("");
     const [position, setposition] = React.useState("");
@@ -28,8 +28,9 @@ const Terminal = ({ userData }) => {
                 position: position,
                 salary: salary,
                 description: description,
-                placed: true,
+                placed: placed,
                 requirements: require,
+                id:userID
             })
             .then(function () {
                 console.log("Document successfully written!");
@@ -46,9 +47,6 @@ const Terminal = ({ userData }) => {
         <div className="window">
             <div className="title-bar">
                 <div className="content">
-                    <h1>Registration Form</h1>
-
-                    <div className="content">
                         <form id="add-cafe-form">
                             <input
                                 id="forminput"
@@ -76,7 +74,7 @@ const Terminal = ({ userData }) => {
                                 id="forminput"
                                 type="text"
                                 name="require"
-                                placeholder="Please mention the requirements.."
+                                placeholder="Minimum Requirements for the position"
                                 onChange={(e) => setrequire(e.target.value)}
                             />
                             <input
@@ -93,8 +91,14 @@ const Terminal = ({ userData }) => {
                                 placeholder="Salary"
                                 onChange={(e) => setsalary(e.target.value)}
                             />
+                            <textarea
+                                name="description"
+                                placeholder="Details"
+                                id="forminput"
+                                onChange={(e) => setdescription(e.target.value)}
+                            ></textarea>
                             <p id="question">
-                                Were You selected for the Interviews?
+                                Did you get the job?
                             </p>
                             <label id="radiolabel">
                                 <input
@@ -116,18 +120,12 @@ const Terminal = ({ userData }) => {
                                 No
                             </label>
 
-                            <textarea
-                                name="description"
-                                placeholder="Description"
-                                id="forminput"
-                                onChange={(e) => setdescription(e.target.value)}
-                            ></textarea>
                             <button id="myBtn" onClick={addDataHandler}>
                                 Submit
                             </button>
                             {/* <Example /> */}
                         </form>
-                    </div>
+                    
                 </div>
             </div>
         </div>
