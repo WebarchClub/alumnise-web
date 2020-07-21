@@ -1,5 +1,5 @@
 body {
-    background: #fff7f7;
+    background: #FFFAFA;
     font-family: ubuntu;
 }
 
@@ -8,6 +8,7 @@ body {
     margin: 0px auto;
     padding: 10px 10px;
     border-radius: 10px 10px 10px 10px;
+    text-align: left;
 }
 
 #forminput {
@@ -24,12 +25,12 @@ body {
 }
 
 #question {
+    margin: 2% 10% !important;
     font-family: "ubuntu";
-    display: inline;
+    display: block;
 }
 
 #radiolabel {
-    background-color: #fff7f7;
     color: #000000;
     margin: 2% 10% !important;
     border: 0;
@@ -53,12 +54,12 @@ form:after {
 }
 
 button {
+    text-align: center;
     border: 0;
     background: rgb(62, 100, 255) !important;
     border-radius: 10px;
     padding: 13px;
-    width: 14%;
-    box-shadow: -1px 0px 1px #fff7f7;
+    max-width: fit-content;
     font-weight: bold;
     font-family: ubuntu;
     letter-spacing: 1px;
@@ -69,13 +70,13 @@ button {
 }
 
 input {
-    background-color: #fff7f7;
+    background-color: #FFFAFA;
     color: black;
     border-bottom: 1px solid rgb(255, 0, 0);
 }
 
 textarea {
-    background-color: #fff7f7;
+    background-color: #FFFAFA;
     color: black;
     border-bottom: 1px solid rgb(255, 0, 0);
     margin: 5% 10% !important;
@@ -91,9 +92,8 @@ textarea {
     font-size: 18px;
     outline: none;
 }
-
 label {
-    background-color: #fff7f7;
+    background-color: #FFFAFA;
     color: #000000;
     margin: 5% 10% !important;
     margin: 0;

@@ -13,10 +13,10 @@ const Terminal = ({ userData }) => {
     const [require, setrequire] = React.useState("");
     const userID = userData.id;
     const Username = userData.displayName;
-
+    const email=  JSON.stringify(userData.emails);
     const addDataHandler = (e) => {
         e.preventDefault();
-
+        const today = new Date();
         const db = firebase.firestore();
         db.collection("posts")
             .add({
@@ -29,7 +29,9 @@ const Terminal = ({ userData }) => {
                 description: description,
                 placed: placed,
                 requirements: require,
-                id: userID
+                id: userID,
+                time:today,
+                email: email
             })
             .then(function () {
                 document.getElementById("terminal").reset();
@@ -118,7 +120,7 @@ const Terminal = ({ userData }) => {
                                 onChange={handleOptionChange}
                             />
                                 Yes
-                            </label>
+                        </label>
 
                         <label id="radiolabel">
                             <input
@@ -128,8 +130,8 @@ const Terminal = ({ userData }) => {
                                 onChange={handleOptionChange}
                             />
                                 No
-                            </label>
-
+                        </label>
+                            <br/>
                         <button id="myBtn" onClick={addDataHandler}>
                             Submit
                             </button>

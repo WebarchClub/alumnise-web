@@ -1,15 +1,9 @@
 require("dotenv").config();
-
-//NOTE : USE NPM RUN DEV INSTEAD OF NPM RUN START
-
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const keys = require("../config");
-const chalk = require("chalk");
 let user = {};
-
 passport.serializeUser((user, done) => {
     done(null, user);
 });
@@ -18,22 +12,15 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-var mailId;
 passport.use(
     new LinkedInStrategy(
         {
-            clientID: keys.LINKEDIN.clientID,
-            clientSecret: keys.LINKEDIN.clientSecret,
+            clientID: process.env.clientID,
+            clientSecret: process.env.clientSecret,
             callbackURL: "http://localhost:3000/auth/linkedin/callback",
             scope: ["r_emailaddress", "r_liteprofile"],
         },
         function (accessToken, refreshToken, profile, done) {
-            // console.log(chalk.cyan(JSON.stringify(profile))); // all the details of the user
-            // profile.emails.forEach((email) => {
-            //     mailId = email.value;
-            // });
-            // console.log(profile);
-            // console.log(chalk.green(mailId)); //mail id
             user = { ...profile };
             return done(null, profile);
         }
